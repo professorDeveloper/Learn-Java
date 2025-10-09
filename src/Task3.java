@@ -67,12 +67,24 @@ public class Task3 {
 //        System.out.printf("%d, %d, %d, %d", minglik, yuzlik, onlik, birlik);
 //    }
 
-    //Task3.12
+    //Task3.12//     public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Son:");
+//        int a =scanner.nextInt();
+//        String msg =a%2==0?"Juft":"Toq";
+//        System.out.println(msg);
+//    }
+
+    //Task3.13
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Son:");
-        int a =scanner.nextInt();
-        String msg =a%2==0?"Juft":"Toq";
-        System.out.println(msg);
+        System.out.print("Son1:");
+        int son1 = scanner.nextInt();
+        System.out.print("Son2:");
+        int son2 = scanner.nextInt();
+        System.out.print("Son3:");
+        int son3 = scanner.nextInt();
+        int max = son1 > son2 ? Math.max(son1, son3) : Math.max(son2, son3);
+        System.out.println("Max son:" + max);
     }
 }
