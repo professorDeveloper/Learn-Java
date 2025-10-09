@@ -29,19 +29,33 @@ public class Task3 {
     /// /        System.out.println(min);
 //    }
     //Task3.9
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("D:");
-        int d = scanner.nextInt();
-        System.out.print("V1:");
-        int v1 = scanner.nextInt();
-        System.out.print("V2:");
-        int v2 = scanner.nextInt();
-        int t =d/(v1+v2);
-        int s1 =v1*t;
-        int s2 =v2*t;
-        System.out.println("Uchratish vaqti:"+t);
-        System.out.println("Mashina1 bosib o`tgan masofa:"+s1);
-        System.out.println("Mashina2 bosib o`tgan masofa:"+s2);
-    }
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("D:");
+//        int d = scanner.nextInt();
+//        System.out.print("V1:");
+//        int v1 = scanner.nextInt();
+//        System.out.print("V2:");
+//        int v2 = scanner.nextInt();
+//        int t =d/(v1+v2);
+//        int s1 =v1*t;
+//        int s2 =v2*t;
+//        System.out.println("Uchratish vaqti:"+t);
+//        System.out.println("Mashina1 bosib o`tgan masofa:"+s1);
+//        System.out.println("Mashina2 bosib o`tgan masofa:"+s2);
+//    }
+
+
+    //Task3.10
+//    public static void main(String[] args) {
+//        int a = 123;
+//        int yuzlik = a / 100;
+//        int onlik = a / 10 %10;
+//        int birlik = a % 10;
+//        System.out.println("Yuzlik:"+yuzlik);
+//        System.out.println("Onlik:"+onlik);
+//        System.out.println("Birlik:"+birlik);
+//    }
+
+
 }
