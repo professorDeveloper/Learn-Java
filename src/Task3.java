@@ -67,4 +67,12 @@ public class Task3 {
 //        System.out.printf("%d, %d, %d, %d", minglik, yuzlik, onlik, birlik);
 //    }
 
+    //Task3.12
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Son:");
+        int a =scanner.nextInt();
+        String msg =a%2==0?"Juft":"Toq";
+        System.out.println(msg);
+    }
 }
