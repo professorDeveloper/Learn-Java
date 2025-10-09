@@ -57,5 +57,14 @@ public class Task3 {
 //        System.out.println("Birlik:"+birlik);
 //    }
 
+    //Task3.11
+    public static void main(String[] args) {
+        int a = 1234;
+        int minglik = a / 1000;
+        int yuzlik = (a % 1000) / 100;
+        int onlik = (a % 100) / 10;
+        int birlik = a % 10;
+        System.out.printf("%d, %d, %d, %d", minglik, yuzlik, onlik, birlik);
+    }
 
 }
