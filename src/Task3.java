@@ -76,15 +76,24 @@ public class Task3 {
 //    }
 
     //Task3.13
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Son1:");
+//        int son1 = scanner.nextInt();
+//        System.out.print("Son2:");
+//        int son2 = scanner.nextInt();
+//        System.out.print("Son3:");
+//        int son3 = scanner.nextInt();
+//        int max = son1 > son2 ? Math.max(son1, son3) : Math.max(son2, son3);
+//        System.out.println("Max son:" + max);
+//    }
+
+    //Task3.14
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Son1:");
-        int son1 = scanner.nextInt();
-        System.out.print("Son2:");
-        int son2 = scanner.nextInt();
-        System.out.print("Son3:");
-        int son3 = scanner.nextInt();
-        int max = son1 > son2 ? Math.max(son1, son3) : Math.max(son2, son3);
-        System.out.println("Max son:" + max);
+        System.out.print("Son:");
+        int son =scanner.nextInt();
+        String msg = ((son & 1)==1) ? "Toq" : "Juft";
+        System.out.println(son+" soni "+msg);
     }
 }
