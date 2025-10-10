@@ -11,13 +11,13 @@ public class Task2 {
 //    }
 
     //Masala10
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Son1:");
-        int son1 = scanner.nextInt();
-        System.out.print("Son2:");
-       int son2 = scanner.nextInt();
-
-        System.out.println("Natija:"+(son1+son2));
-    }
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Son1:");
+//        int son1 = scanner.nextInt();
+//        System.out.print("Son2:");
+//       int son2 = scanner.nextInt();
+//
+//        System.out.println("Natija:"+(son1+son2));
+//    }
 }
