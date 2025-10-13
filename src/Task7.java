@@ -14,15 +14,46 @@ public class Task7 {
 //        }
 //    }
 
-    //Task2.
-    public static void main(String[] args) {
-        int n = 5;
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = i + 1;
-        }
-        for (int i = n - 1; i >= 0; i--) {
-            System.out.println(arr[i]);
-        }
-    }
+    //Task7.2
+//    public static void main(String[] args) {
+//        int n = 5;
+//        int[] arr = new int[n];
+//        for (int i = 0; i < n; i++) {
+//            arr[i] = i + 1;
+//        }
+//        for (int i = n - 1; i >= 0; i--) {
+//            System.out.println(arr[i]);
+//        }
+//    }
+    //Task7.3
+//    public static void main(String[] args) {
+//        int n = 5;
+//        int[] arr = new int[n];
+//        for (int i = 0; i < n; i++) {
+//            arr[i] = i + 1;
+//        }
+//        int oddCount = getOddCount(arr);
+//        int[] newArr = new int[oddCount];
+//        int index =0;
+//        for (int i = 0; i < n; i++) {
+//            if (arr[i] % 2 != 0) {
+//                newArr[index] = arr[i];
+//                index++;
+//            }
+//        }
+//        for (int i = 0; i < oddCount; i++) {
+//            System.out.println(newArr[i]);
+//        }
+//
+//    }
+//
+//    public static int getOddCount(int[] arr) {
+//        int count = 0;
+//        for (int j : arr) {
+//            if (j % 2 != 0) {
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
 }
