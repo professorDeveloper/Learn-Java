@@ -57,34 +57,49 @@ public class Task7 {
 //        return count;
 //    }
     // Task7.4
+//    public static void main(String[] args) {
+//        int n = 5;
+//        int[] arr = new int[n];
+//        for (int i = 0; i < n; i++) {
+//            arr[i] = i + 1;
+//        }
+//        int oddCount = getJuftCount(arr);
+//        int[] newArr = new int[oddCount];
+//        int index =0;
+//        for (int i = 0; i < n; i++) {
+//            if (arr[i] % 2 == 0) {
+//                newArr[index] = arr[i];
+//                index++;
+//            }
+//        }
+//        for (int i = 0; i < oddCount; i++) {
+//            System.out.println(newArr[i]);
+//        }
+//
+//    }
+//
+//    public static int getJuftCount(int[] arr) {
+//        int count = 0;
+//        for (int j : arr) {
+//            if (j % 2 == 0) {
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
+    // Task7.5
     public static void main(String[] args) {
         int n = 5;
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = i + 1;
         }
-        int oddCount = getJuftCount(arr);
-        int[] newArr = new int[oddCount];
-        int index =0;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] % 2 == 0) {
-                newArr[index] = arr[i];
-                index++;
+        int max = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
             }
         }
-        for (int i = 0; i < oddCount; i++) {
-            System.out.println(newArr[i]);
-        }
-
-    }
-
-    public static int getJuftCount(int[] arr) {
-        int count = 0;
-        for (int j : arr) {
-            if (j % 2 == 0) {
-                count++;
-            }
-        }
-        return count;
+        System.out.println(max);
     }
 }
