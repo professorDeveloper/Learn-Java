@@ -103,18 +103,58 @@ public class Task7 {
 //        System.out.println(max);
 //    }
     //Task7.6
+//    public static void main(String[] args) {
+//        int n = 5;
+//        int[] arr = new int[n];
+//        for (int i = 0; i < n; i++) {
+//            arr[i] = i + 1;
+//        }
+//        int min = arr[0];
+//        for (int i = 1; i < n; i++) {
+//            if (arr[i] < min) {
+//                min = arr[i];
+//            }
+//        }
+//        System.out.println(min);
+//    }
+    //Task7.7
+//    public static void main(String[] args) {
+//
+//        int[] arr = {2, 4, 3, 5, 6, 12};
+//
+//        int lastLocalMaxIndex = -1;
+//        int lastLocalMax = -1;
+//
+//        for (int i = 1; i < arr.length - 1; i++) {
+//            if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+//                lastLocalMaxIndex = i;
+//                lastLocalMax = arr[i];
+//            }
+//        }
+//        System.out.println(lastLocalMax);
+//        System.out.println(lastLocalMaxIndex);
+//
+//    }
+    //Task7.8
     public static void main(String[] args) {
-        int n = 5;
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = i + 1;
-        }
-        int min = arr[0];
-        for (int i = 1; i < n; i++) {
-            if (arr[i] < min) {
-                min = arr[i];
+        int[] arr = {7, 4, 2, 3, 1, 4, 5, 2, 4, 7};
+        int[] newArr = new int[arr.length];
+        int index = 0;
+        for (int i = 0; i < arr.length; i++) {
+            boolean isHave = true;
+            for (int j = 0; j < index; j++) {
+                if (arr[i] == newArr[j]) {
+                    isHave = false;
+                    break;
+                }
+            }
+            if (isHave) {
+                newArr[index] = arr[i];
+                index++;
             }
         }
-        System.out.println(min);
+        for (int i = 0; i < index; i++) {
+            System.out.println(newArr[i]);
+        }
     }
 }
