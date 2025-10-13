@@ -56,7 +56,7 @@ public class Task7 {
 //        }
 //        return count;
 //    }
-
+    // Task7.4
     public static void main(String[] args) {
         int n = 5;
         int[] arr = new int[n];
