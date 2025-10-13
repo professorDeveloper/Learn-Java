@@ -32,12 +32,27 @@ public class Task6 {
 //        return str.length() >= 2 ? str.substring(0, 2) + str.substring(0, 2) + str.substring(0, 2) : str + str + str;
 //    }
 
+//    public static void main(String[] args) {
+//        String a = "hello";
+//        boolean result = checkEndLyStr(a);
+//        System.out.println(result);
+//    }
+//    public static boolean checkEndLyStr(String str){
+//        return str.endsWith("ly");
+//    }
+
     public static void main(String[] args) {
-        String a = "hello";
-        boolean result = checkEndLyStr(a);
+        String a = "bb0bc";
+        boolean result = checkBAnybStr(a);
         System.out.println(result);
     }
-    public static boolean checkEndLyStr(String str){
-        return str.endsWith("ly");
+
+    public static boolean checkBAnybStr(String str) {
+        for (int i = 2; i < str.length(); i++) {
+            if (str.charAt(i - 2) == 'b' && str.charAt(i) == 'b') {
+                return true;
+            }
+        }
+        return false;
     }
 }
