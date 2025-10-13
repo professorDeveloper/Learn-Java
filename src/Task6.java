@@ -20,4 +20,15 @@ public class Task6 {
 //    public static String resubstring(String str) {
 //        return str.length() >= 2 ? str.substring(0, 2) : str;
 //    }
+
+    public static void main(String[] args) {
+        String a = "hello";
+        String result = resubString(a);
+        System.out.println(result);
+
+    }
+
+    public static String resubString(String str) {
+        return str.length() >= 2 ? str.substring(0, 2) + str.substring(0, 2) + str.substring(0, 2) : str + str + str;
+    }
 }
