@@ -28,16 +28,31 @@ public class Task8 {
 //    }
 
     //Task8.2
+//    public static void main(String[] args) {
+//        String str = "AAbb";
+//        String result = doubChar(str);
+//        System.out.println(result);
+//    }
+//    public static String doubChar(String str) {
+//        StringBuffer result = new StringBuffer();
+//        for (int i = 0; i < str.length(); i++) {
+//            result.append(str.charAt(i)).append(str.charAt(i));
+//        }
+//        return result.toString();
+//    }
+
+
+    //Task8.3
     public static void main(String[] args) {
-        String str = "AAbb";
-        String result = doubChar(str);
-        System.out.println(result);
+        System.out.println(countHi("abc hi ho"));
     }
-    public static String doubChar(String str) {
-        StringBuffer result = new StringBuffer();
-        for (int i = 0; i < str.length(); i++) {
-            result.append(str.charAt(i)).append(str.charAt(i));
+
+    public static int countHi(String str) {
+        int count = 0;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.substring(i, i + 2).equals("hi")) {
+                count++;
+            }
         }
-        return result.toString();
-    }
-}
+        return count;
+    }}
