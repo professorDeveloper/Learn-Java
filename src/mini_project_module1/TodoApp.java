@@ -3,6 +3,13 @@ package mini_project_module1;
 import java.util.Objects;
 import java.util.Scanner;
 
+/**
+ * @author azamov
+ * @description This todo project for learning using programming principles and also learning java
+ * @since 10/14/2025
+ * @time 12:19 AM
+ * @version v1.0
+ * */
 public class TodoApp {
     public static String[] tasks = new String[10];
     public static String[] taskStatus = new String[10];
@@ -74,6 +81,13 @@ public class TodoApp {
             int taskNum = scanner.nextInt();
             if (taskNum > 0 && taskNum <= tasks.length && tasks[taskNum - 1] != null) {
                 System.out.println("Choose one of the status:  1 -> Pending, 2 -> In Progress, 3 -> Done ");
+                int status = scanner.nextInt();
+                if (status == 1 || status == 2 || status == 3) {
+                    taskStatus[taskNum - 1] = status == 1 ? "Pending" : status == 2 ? "In Progress" : "Done";
+                    System.out.println("Task updated successfully Status: " + taskStatus[taskNum - 1]);
+                } else {
+                    System.out.println("Invalid status");
+                }
             }
         }
     }
