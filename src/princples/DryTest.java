@@ -1,3 +1,5 @@
+package princples;
+
 public class DryTest {
     public static void main(String[] args) {
         int a = 10;
