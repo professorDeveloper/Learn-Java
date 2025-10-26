@@ -1,3 +1,5 @@
+package old;
+
 import java.util.Scanner;
 
 public class Task3 {

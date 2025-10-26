@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package old;
 
 public class Task5 {
     //Task5.2

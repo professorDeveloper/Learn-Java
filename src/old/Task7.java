@@ -1,3 +1,5 @@
+package old;
+
 public class Task7 {
     //Task7.1
 

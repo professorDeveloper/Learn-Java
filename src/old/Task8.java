@@ -1,3 +1,5 @@
+package old;
+
 // Berilgan stringning istalgan joyida "code" qatori necha marta paydo bo'lishini qaytaring countni qaaytaring, bundan mustasno, biz "d" uchun har qanday harfni qabul qilamiz, shuning uchun "cope" va "cooe" ni hisoblang.
 //aaacodebbb -> 1
 //codexxcode -> 2
