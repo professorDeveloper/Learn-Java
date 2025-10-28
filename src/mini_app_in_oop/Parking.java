@@ -36,4 +36,25 @@ public class Parking {
             rows[i] = row;
         }
     }
+
+    public void showParking() {
+        System.out.println("--------------------------------");
+        for (Row row : rows) {
+            for (Cell cell : row.getCells()) {
+                System.out.print(cell.getSign() + "|");
+            }
+            System.out.println();
+        }
+        System.out.println("--------------------------------");
+    }
+
+    public void park(Car car,int rowIndex,int columnIndex) {
+        String sign =CarType.findCarTypeByCarTypeName(car.getType());
+        car.setType(sign);
+        Row row = rows[rowIndex];
+        Cell[] cells = row.getCells();
+        Cell cell = cells[columnIndex];
+        cell.setCar(car);
+        cell.setSign(car.getType());
+    }
 }
