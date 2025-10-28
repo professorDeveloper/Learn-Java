@@ -17,10 +17,10 @@ public class AndroidUI {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1" -> displayPark(parking);
-//                case "2" -> availableCells(parking);
-//                case "3" -> notAvailableCells(parking);
+                case "2" -> availableCells(parking);
+                case "3" -> notAvailableCells(parking);
                 case "4" -> insertCar(parking);
-//                case "5" -> outCar(parking);
+                case "5" -> outCar(parking);
                 case "6" -> {
                     System.out.println("Exited");
                     System.exit(0);
@@ -30,8 +30,17 @@ public class AndroidUI {
         }
     }
 
+    private static void outCar(Parking parking) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter row: ");
+        int row = scanner.nextInt();
+        System.out.print("Enter column: ");
+        int column = scanner.nextInt();
+        parking.outCar(row, column);
+    }
+
     private static void insertCar(Parking parking) {
-         Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String registerNum = readConsole("Enter register number: ");
         String carType = readConsole("Enter Car Type \n (POLICE, FIRE, AMBULANCE, TAXI, BUS): ");
         System.out.print("Enter row: ");
@@ -46,6 +55,14 @@ public class AndroidUI {
         Scanner scanner = new Scanner(System.in);
         System.out.print(hint);
         return scanner.nextLine();
+    }
+
+    private static void availableCells(Parking parking) {
+        parking.availableCells();
+    }
+
+    private static void notAvailableCells(Parking parking) {
+        parking.notAvailableCells();
     }
 
     private static void displayPark(Parking parking) {

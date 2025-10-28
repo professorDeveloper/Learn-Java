@@ -1,5 +1,7 @@
 package mini_app_in_oop;
 
+import static mini_project_module1.ParkingApp.emptySign;
+
 public class Parking {
     private Row[] rows;
     private String parkName;
@@ -48,13 +50,79 @@ public class Parking {
         System.out.println("--------------------------------");
     }
 
-    public void park(Car car,int rowIndex,int columnIndex) {
-        String sign =CarType.findCarTypeByCarTypeName(car.getType());
+    public void park(Car car, int rowIndex, int columnIndex) {
+        String sign = CarType.findCarTypeByCarTypeName(car.getType());
         car.setType(sign);
-        Row row = rows[rowIndex];
-        Cell[] cells = row.getCells();
-        Cell cell = cells[columnIndex];
-        cell.setCar(car);
-        cell.setSign(car.getType());
+        if (rows.length > rowIndex) {
+            Row row = rows[rowIndex];
+            if (row.getCells().length > columnIndex) {
+                Cell[] cells = row.getCells();
+                Cell cell = cells[columnIndex];
+                if (cell.getSign().equals(CarType.EMPTY_SIGN)) {
+                    cell.setSign(car.getType());
+                    cell.setCar(car);
+                    System.out.println("Car has been parked in " + row.getRowId() + " row and " + cell.getCellId() + " column");
+                } else {
+                    System.out.println("Cell is not empty");
+                }
+            } else {
+                System.out.println("Invalid column index");
+            }
+        } else {
+            System.out.println("Invalid row index");
+        }
+    }
+
+    public void availableCells() {
+        System.out.println("==========================================");
+        Row[] rows = this.rows;
+        int count = 0;
+        for (Row row : rows) {
+            for (Cell cell : row.getCells()) {
+                if (cell.getSign().equals(emptySign)) {
+                    count++;
+                }
+            }
+        }
+        System.out.println("Available cells count: " + count);
+        System.out.println("==========================================");
+    }
+
+    public void notAvailableCells() {
+        System.out.println("==========================================");
+        Row[] rows = this.rows;
+        int count = 0;
+        for (Row row : rows) {
+            for (Cell cell : row.getCells()) {
+                if (!cell.getSign().equals(emptySign)) {
+                    count++;
+                }
+            }
+        }
+        System.out.println("Not Available cells count: " + count);
+        System.out.println("==========================================");
+    }
+
+    public void outCar(int row, int column) {
+        if (rows.length > row) {
+            Row row1 = rows[row];
+            if (row1.getCells().length > column) {
+                Cell[] cells = row1.getCells();
+                Cell cell = cells[column];
+                if (!cell.getSign().equals(emptySign)) {
+                    Car car = cell.getCar();
+                    car.setType(cell.getSign());
+                    cell.setSign(emptySign);
+                    cell.setCar(null);
+                    System.out.println("Car out successfully");
+                } else {
+                    System.out.println("Cell is empty");
+                }
+            } else {
+                System.out.println("Invalid column index");
+            }
+        } else {
+            System.out.println("Invalid row index");
+        }
     }
 }
