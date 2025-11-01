@@ -9,7 +9,6 @@ public class Parent {
         public void helper() {
             class Inner {
                 void hi() {
-//                    System.out.println();
                     System.out.println("HelperTest");
                 }
             }
