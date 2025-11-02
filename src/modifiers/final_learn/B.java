@@ -1,4 +1,4 @@
-package final_learn;
+package modifiers.final_learn;
 
 public class B  extends A{
 

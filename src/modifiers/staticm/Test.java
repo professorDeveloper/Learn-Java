@@ -1,4 +1,4 @@
-package staticm;
+package modifiers.staticm;
 
 public class Test {
     /*
@@ -29,5 +29,6 @@ class Main {
 //        System.out.println(test3.field);
 //        System.out.println(test4.field);
         System.out.println(Test.field="Hello");
+
     }
 }

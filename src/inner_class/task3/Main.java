@@ -7,5 +7,6 @@ public class Main {
         Parent.NestedNormal nestedNormal = parent.new NestedNormal();
         topLevel.helper();
         nestedNormal.helper();
+        System.out.println("Hello world");
     }
 }

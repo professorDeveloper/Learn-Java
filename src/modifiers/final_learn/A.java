@@ -1,4 +1,4 @@
-package final_learn;
+package modifiers.final_learn;
 
 public /*final*/ class A {
     // final class imutable classlar yartish uchun kerak boladi.
