@@ -1,4 +1,4 @@
-package mini_app_in_oop;
+package mini_apps.mini_app_in_oop;
 
 public class Car {
     private String registeredNumber;

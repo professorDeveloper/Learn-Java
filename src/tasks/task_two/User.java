@@ -1,4 +1,4 @@
-package task_two;
+package tasks.task_two;
 
 /*
 Ism, Familya, PhoneNumber, Age va isMale fieldlari bo'lgan User classini encapsulation prinsipi asosida yarating

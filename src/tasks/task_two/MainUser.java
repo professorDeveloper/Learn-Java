@@ -1,5 +1,5 @@
-package task_two;
-import task_two.User;
+package tasks.task_two;
+
 class MainUser {
     public static void main(String[] args) {
         User user = new User("gg", "ggg", 19, "+gg", false);

@@ -1,6 +1,5 @@
-package task_three;
+package tasks.task_three;
 
-import task_three.ClassRoom;
 public class MainClassRoom {
     public static void main(String[] args) {
         ClassRoom classRoom = new ClassRoom(1, "Sherzod", "123456", "Azam", 1);

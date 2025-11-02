@@ -1,6 +1,6 @@
-package mini_app_in_oop;
+package mini_apps.mini_app_in_oop;
 
-import static mini_project_module1.ParkingApp.emptySign;
+import static mini_apps.mini_project_module1.ParkingApp.emptySign;
 
 public class Parking {
     private Row[] rows;

@@ -1,4 +1,4 @@
-package mini_project_module1;
+package mini_apps.mini_project_module1;
 
 import java.util.Arrays;
 import java.util.Scanner;

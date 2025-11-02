@@ -1,4 +1,4 @@
-package task_three;
+package tasks.task_three;
 
 /*
 roomNumber,teacherName,teacherPhoneNumber, studentName (bittadan ko'p bo'ladi) va studentCount fieldlari bo'lgan ClassRoom classini encapsulation prinsipi asosida yarating

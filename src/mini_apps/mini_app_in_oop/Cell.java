@@ -1,6 +1,4 @@
-package mini_app_in_oop;
-
-import static mini_app_in_oop.CarType.EMPTY_SIGN;
+package mini_apps.mini_app_in_oop;
 
 public class Cell {
     private Car car;

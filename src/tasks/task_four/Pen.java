@@ -1,4 +1,4 @@
-package task_four;
+package tasks.task_four;
 /*
 miqdor,clicked va oneLetter fieldlari bo'lgan Pen Classi encapsulation prinsplariga asoslangan holda yaratilsin.
 Miqdor -> ruchkani siyohi qanchaligi
