@@ -4,10 +4,9 @@ import java.time.LocalDate;
 
 public class App {
     public static void main(String[] args) {
-        EmployeeRecord employeeRecord = new EmployeeRecord(1, "mohamed", LocalDate.of(2021, 1, 1));
-        EmployeeRecord employeeRecordThrow = new EmployeeRecord(-1, "Azamov", LocalDate.of(2023, 1, 1));
-//        EmployeeDTO employeeDTO = new EmployeeDTO(1, "mohamed", LocalDate.of(2021, 1, 1));
-
-        System.out.println(employeeRecord.json());
+        BookRecord bookRecord = new BookRecord("Robinson Crusoe", "Daniel Defoe", 500, 1000);
+        System.out.println(bookRecord.json());
+        BookRecord bookRecordWithError = new BookRecord("Robinson Crusoe", "Daniel Defoe", 0, 1000);
+        System.out.println(bookRecordWithError.json());
     }
 }
