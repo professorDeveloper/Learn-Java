@@ -8,6 +8,5 @@ public class VarSimple {
         System.out.println(name);
         System.out.println(age);
         System.out.println(isMarried);
-//        var
     }
 }
