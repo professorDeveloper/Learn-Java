@@ -10,8 +10,9 @@ public class Main {
         FactoryMethod fm = FactoryMethod.getInstance();
         FactoryMethod fm2 = FactoryMethod.getInstance();
         Employee emp = new Employee.EmployeeBuilder().id("1").firstName("John").lastName("Doe").build();
-//        System.out.println(System.identityHashCode(fm2));
-//        System.out.println(System.identityHashCode(Singleton.getInstance()));
-//        System.out.println(System.identityHashCode(Singleton.getInstance()));
+        System.out.println(emp);
+        System.out.println(System.identityHashCode(fm2));
+        System.out.println(System.identityHashCode(Singleton.getInstance()));
+        System.out.println(System.identityHashCode(Singleton.getInstance()));
     }
 }
