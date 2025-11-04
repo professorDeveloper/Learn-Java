@@ -1,4 +1,4 @@
-package design_patterns;
+package design_patterns.factory_method;
 
 public class FactoryMethod {
     private FactoryMethod() {
