@@ -17,7 +17,7 @@ class TodoMain {
         todos[1].isDeleted = false;
         // todo3
         todos[2] = new Todo();
-        todos[2].name = "doing tasks complete projects";
+        todos[2].name = "doing module1.tasks complete projects";
         todos[2].day = 5;
         todos[2].isComplete = false;
         todos[2].isDeleted = false;
