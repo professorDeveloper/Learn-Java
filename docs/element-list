@@ -1,0 +1,10 @@
+projects.mini_app_in_oop
+projects.mini_project_module1
+projects.quiz_app.frontend
+projects.todo_app.backend.domains
+projects.todo_app.backend.dtos
+projects.todo_app.backend.enums
+projects.todo_app.backend.services
+projects.todo_app.backend.services.impl
+projects.todo_app.backend.utils
+projects.todo_app.frontend
