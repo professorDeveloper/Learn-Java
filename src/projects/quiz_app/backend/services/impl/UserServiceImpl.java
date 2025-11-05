@@ -10,7 +10,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean login(String username, String password) {
-
+        User user = this.findUser(username)
         return false;
     }
 
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    private User findUser(String username) {
+    private  User findUser(String username) {
         for (int i = 0; i < index; i++) {
             if (users[i].username().equals(username)) {
                 return users[i];
