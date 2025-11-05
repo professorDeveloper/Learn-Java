@@ -3,13 +3,19 @@ package projects.quiz_app.frontend.auth;
 import projects.quiz_app.backend.enums.Role;
 import projects.quiz_app.backend.services.UserService;
 import projects.quiz_app.backend.services.impl.UserServiceImpl;
-import projects.quiz_app.frontend.listener.AuthRoleListener;
+import projects.quiz_app.frontend.helper.AuthRoleListener;
+import projects.quiz_app.frontend.helper.UiHelper;
 
 import java.util.Scanner;
 
 public class AuthPage {
     private final UserService userService = new UserServiceImpl();
     private AuthRoleListener listener;
+
+    public AuthPage() {
+        // register default teacher
+        userService.register("teacher","teacher", Role.TEACHER);
+    }
 
     public void onUserRoleListener(AuthRoleListener listener) {
         this.listener = listener;
@@ -29,6 +35,7 @@ public class AuthPage {
             System.out.println("Username already exists !");
         }
     }
+
 
     public void login() {
         Scanner scanner = new Scanner(System.in);

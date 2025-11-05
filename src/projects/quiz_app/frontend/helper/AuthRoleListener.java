@@ -1,4 +1,4 @@
-package projects.quiz_app.frontend.listener;
+package projects.quiz_app.frontend.helper;
 
 import projects.quiz_app.backend.enums.Role;
 

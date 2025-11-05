@@ -1,93 +1,75 @@
 package projects.quiz_app.frontend.app;
 
 import projects.quiz_app.backend.enums.Role;
-import projects.quiz_app.backend.services.UserService;
-import projects.quiz_app.backend.services.impl.UserServiceImpl;
 import projects.quiz_app.frontend.auth.AuthPage;
+import projects.quiz_app.frontend.helper.LogoutListener;
 import projects.quiz_app.frontend.student.StudentPage;
 import projects.quiz_app.frontend.teacher.TeacherPage;
 
 import java.util.Scanner;
 
+import static projects.quiz_app.frontend.helper.UiHelper.*;
 
 public class Application {
     private final AuthPage authPage = new AuthPage();
     private final StudentPage studentPage = new StudentPage();
     private final TeacherPage teacherPage = new TeacherPage();
-    private final String[] logRegMenus = new String[]{"1 -> Login", "2 -> Register", "3 -> Exit"};
-    private final String[] teacherMenus = new String[]{"1-> Create Quiz", "2 -> Delete Quiz", "3 -> Update Quiz", "4 -> List Quiz", "5 -> Exit"};
-    private final String[] studentMenus = new String[]{"1-> Start Quiz", "2 -> View Rankings", "3 -> Exit"};
-    private final Runnable[] logRegActions = new Runnable[]{authPage::login, authPage::register, this::systemExit};
+    private final Runnable[] logRegActions = {authPage::login, authPage::register, () -> System.exit(0)};
+    private final Runnable[] teacherActions = {teacherPage::createQuiz, teacherPage::deleteQuiz, teacherPage::updateQuiz, teacherPage::listQuiz, this::systemLogout};
+    private final Runnable[] studentActions = {studentPage::startQuiz, studentPage::viewRankings, this::systemLogout};
 
-    private void systemExit() {
-        System.out.println("Exited..");
-        System.exit(0);
-    }
-
-    private final Runnable[] teacherActions = new Runnable[]{teacherPage::createQuiz, teacherPage::deleteQuiz, teacherPage::updateQuiz, teacherPage::listQuiz, this::systemExit};
-    private final Runnable[] studentActions = new Runnable[]{studentPage::startQuiz, studentPage::viewRankings, this::systemExit};
+    private LogoutListener listener;
+    private final Scanner scanner = new Scanner(System.in);
 
     public void runApp() {
-        for (;;) {
+        authPage.onUserRoleListener(this::enterDashboard);
+        while (true) {
             displayMenu(logRegMenus);
-            chooseActions(null);
-            authPage.onUserRoleListener(this::listenerDashboard);
+            chooseAction(null, logRegActions);
         }
     }
 
-
     private void studentDashboard(Role role) {
-        for (;;) {
-
+        var loggedOut = new boolean[]{false};
+        listener = () -> {
+            System.out.println("Logout successfully !\n");
+            loggedOut[0] = true;
+        };
+        while (!loggedOut[0]) {
             displayMenu(studentMenus);
-            chooseActions(role);
+            chooseAction(role, studentActions);
         }
     }
 
     private void teacherDashboard(Role role) {
-        for (;;) {
+        var loggedOut = new boolean[]{false};
+        listener = () -> {
+            System.out.println("Logout successfully !\n");
+            loggedOut[0] = true;
+        };
+        while (!loggedOut[0]) {
             displayMenu(teacherMenus);
-            chooseActions(role);
-
+            chooseAction(role, teacherActions);
         }
     }
 
-    private void listenerDashboard(Role role) {
-        if (role.equals(Role.TEACHER)) {
-            teacherDashboard(role);
-        } else if (role.equals(Role.STUDENT)) {
-            studentDashboard(role);
-        }
+    private void enterDashboard(Role role) {
+        if (role == Role.TEACHER) teacherDashboard(role);
+        else if (role == Role.STUDENT) studentDashboard(role);
     }
 
-    private void chooseActions(Role role) {
-        try{
-            if (role == null) {
-                Scanner scanner = new Scanner(System.in);
-                System.out.print("Choose:");
-                String choose = scanner.nextLine();
-                logRegActions[Integer.parseInt(choose) - 1].run();
-            } else {
-                if (role.equals(Role.TEACHER)) {
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.print("Choose:");
-                    String choose = scanner.nextLine();
-                    teacherActions[Integer.parseInt(choose) - 1].run();
-                } else if (role.equals(Role.STUDENT)) {
-                    System.out.println("....");
-
-                }
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
+    private void chooseAction(Role role, Runnable[] actions) {
+        try {
+            System.out.println("---------------------------------");
+            System.out.print("Choose: ");
+            int choice = Integer.parseInt(scanner.nextLine().trim());
+            actions[choice - 1].run();
+        } catch (Exception e) {
             System.out.println("Invalid choice !");
         }
     }
 
-
-    private void displayMenu(String[] menus) {
-        for (String msg : menus) {
-            System.out.println(msg);
-        }
+    private void systemLogout() {
+        if (listener != null) listener.logoutCalled();
     }
-
 }

@@ -2,6 +2,7 @@ package projects.quiz_app.frontend.teacher;
 
 public class TeacherPage {
 
+
     public void createQuiz() {
 
     }
@@ -17,4 +18,5 @@ public class TeacherPage {
     public void listQuiz() {
 
     }
+
 }
