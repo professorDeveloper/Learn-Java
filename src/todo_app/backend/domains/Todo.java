@@ -71,33 +71,22 @@ public class Todo {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
+
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public Priority getPriority() {
-        return priority;
-    }
+
 
     public void setPriority(Priority priority) {
         this.priority = priority;
-    }
-
-    public Category getCategory() {
-        return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
     }
 
-    public boolean isCompleted() {
-        return isCompleted;
-    }
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
