@@ -3,7 +3,7 @@ package projects.quiz_app.backend.services;
 import projects.quiz_app.backend.enums.Role;
 
 public interface UserService {
-    boolean login(String username, String password);
+    Role login(String username, String password);
 
     boolean register(String username, String password, Role role);
 
