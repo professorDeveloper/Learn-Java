@@ -1,4 +1,7 @@
-package todo_app.backend;
+package todo_app.backend.domains;
+
+import todo_app.backend.enums.Category;
+import todo_app.backend.enums.Priority;
 
 public class Todo {
     private String id;
@@ -58,5 +61,50 @@ public class Todo {
             isCompleted = completed;
             return this;
         }
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
+
+    @Override
+    public String toString() {
+        return "Title: %s | Priority (%s): %s | Category: %s | Completed: %s".formatted(title, priority.name(), priority.getEmoji(), category.getEmoji(), isCompleted);
     }
 }
