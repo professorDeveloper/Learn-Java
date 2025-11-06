@@ -2,13 +2,11 @@ package projects.quiz_app.backend.services.impl;
 
 import projects.quiz_app.backend.dtos.User;
 import projects.quiz_app.backend.enums.Role;
-import projects.quiz_app.backend.services.UserService;
+import projects.quiz_app.backend.services.AuthService;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
-public class UserServiceImpl implements UserService {
+public class AuthServiceImpl implements AuthService {
     private final User[] users = new User[100];
     private int index = 0;
 
@@ -26,7 +24,7 @@ public class UserServiceImpl implements UserService {
     public boolean register(String username, String password, Role role) {
         var checkUser = findUser(username);
         if (checkUser == null) {
-            User user = new User(username, password, Role.STUDENT);
+            User user = new User(username, password, role);
             this.users[this.index++] = user;
             return true;
         } else {

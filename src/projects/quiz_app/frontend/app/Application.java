@@ -1,5 +1,6 @@
 package projects.quiz_app.frontend.app;
 
+import projects.quiz_app.backend.dtos.User;
 import projects.quiz_app.backend.enums.Role;
 import projects.quiz_app.frontend.auth.AuthPage;
 import projects.quiz_app.frontend.helper.LogoutListener;
@@ -16,20 +17,26 @@ public class Application {
     private final TeacherPage teacherPage = new TeacherPage();
     private final Runnable[] logRegActions = {authPage::login, authPage::register, () -> System.exit(0)};
     private final Runnable[] teacherActions = {teacherPage::createQuiz, teacherPage::deleteQuiz, teacherPage::updateQuiz, teacherPage::listQuiz, this::systemLogout};
-    private final Runnable[] studentActions = {studentPage::startQuiz, studentPage::viewRankings, this::systemLogout};
+    private final Runnable[] studentActions = {studentPage::startQuiz, studentPage::viewHistory, this::systemLogout};
 
     private LogoutListener listener;
     private final Scanner scanner = new Scanner(System.in);
 
+
+    public Application() {
+        authPage.initTeacher();
+    }
+
     public void runApp() {
+        System.out.println("Welcome to the Quiz App!");
         authPage.onUserRoleListener(this::enterDashboard);
         while (true) {
             displayMenu(logRegMenus);
-            chooseAction(null, logRegActions);
+            chooseAction(logRegActions);
         }
     }
 
-    private void studentDashboard(Role role) {
+    private void studentDashboard() {
         var loggedOut = new boolean[]{false};
         listener = () -> {
             System.out.println("Logout successfully !\n");
@@ -37,11 +44,11 @@ public class Application {
         };
         while (!loggedOut[0]) {
             displayMenu(studentMenus);
-            chooseAction(role, studentActions);
+            chooseAction(studentActions);
         }
     }
 
-    private void teacherDashboard(Role role) {
+    private void teacherDashboard() {
         var loggedOut = new boolean[]{false};
         listener = () -> {
             System.out.println("Logout successfully !\n");
@@ -49,23 +56,26 @@ public class Application {
         };
         while (!loggedOut[0]) {
             displayMenu(teacherMenus);
-            chooseAction(role, teacherActions);
+            chooseAction(teacherActions);
         }
     }
 
-    private void enterDashboard(Role role) {
-        if (role == Role.TEACHER) teacherDashboard(role);
-        else if (role == Role.STUDENT) studentDashboard(role);
+    private void enterDashboard(User user) {
+        if (user.role() == Role.TEACHER) teacherDashboard();
+        else if (user.role() == Role.STUDENT) {
+            studentPage.setUser(user);
+            studentDashboard();
+        }
     }
 
-    private void chooseAction(Role role, Runnable[] actions) {
+    private void chooseAction(Runnable[] actions) {
         try {
             System.out.println("---------------------------------");
             System.out.print("Choose: ");
             int choice = Integer.parseInt(scanner.nextLine().trim());
             actions[choice - 1].run();
         } catch (Exception e) {
-            System.out.println("Invalid choice !");
+            System.out.println("Something went wrong e:" + e.getMessage());
         }
     }
 

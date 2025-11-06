@@ -1,20 +1,21 @@
 package projects.quiz_app.frontend.auth;
 
 import projects.quiz_app.backend.enums.Role;
-import projects.quiz_app.backend.services.UserService;
-import projects.quiz_app.backend.services.impl.UserServiceImpl;
+import projects.quiz_app.backend.services.AuthService;
+import projects.quiz_app.backend.services.impl.AuthServiceImpl;
 import projects.quiz_app.frontend.helper.AuthRoleListener;
-import projects.quiz_app.frontend.helper.UiHelper;
 
 import java.util.Scanner;
 
+import static projects.quiz_app.backend.enums.Role.TEACHER;
+
 public class AuthPage {
-    private final UserService userService = new UserServiceImpl();
+    private final AuthService authService = new AuthServiceImpl();
     private AuthRoleListener listener;
 
-    public AuthPage() {
-        // register default teacher
-        userService.register("teacher","teacher", Role.TEACHER);
+    public void initTeacher() {
+        authService.register("teacher", "teacher", TEACHER);
+
     }
 
     public void onUserRoleListener(AuthRoleListener listener) {
@@ -27,7 +28,7 @@ public class AuthPage {
         String username = scanner.nextLine();
         System.out.print("Enter Password:");
         String password = scanner.nextLine();
-        var result = userService.register(username, password, Role.STUDENT);
+        var result = authService.register(username, password, Role.STUDENT);
         if (result) {
             System.out.println("User registered successfully !");
             listener.onUserAuthenticated(Role.STUDENT);
@@ -43,7 +44,7 @@ public class AuthPage {
         String username = scanner.nextLine();
         System.out.print("Enter Password:");
         String password = scanner.nextLine();
-        var result = userService.login(username, password);
+        var result = authService.login(username, password);
         switch (result) {
             case STUDENT, TEACHER -> {
                 listener.onUserAuthenticated(result);

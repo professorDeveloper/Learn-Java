@@ -4,8 +4,9 @@ public class Question {
     private String question;
     private Answer[] answers = new Answer[4];
 
-    public Question(String question) {
+    public Question(String question, Answer[] answers) {
         this.question = question;
+        this.answers = answers;
     }
 
     public Answer[] getAnswers() {
@@ -23,4 +24,5 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
+
 }

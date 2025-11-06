@@ -2,29 +2,32 @@ package projects.quiz_app.backend.services.impl;
 
 import kotlin.contracts.Returns;
 import projects.quiz_app.backend.domain.Question;
+import projects.quiz_app.backend.dtos.User;
 import projects.quiz_app.backend.enums.Result;
 import projects.quiz_app.backend.services.QuizService;
+import projects.quiz_app.backend.utils.Utils;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 public class QuizServiceImpl implements QuizService {
     private final Question[] questions = new Question[100];
     private int index = 0;
 
     @Override
-    public Question addQuiz(Question question) {
+    public void addQuiz(Question question) {
         questions[index++] = question;
-        return question;
+
     }
 
     @Override
-    public Result updateQuiz(Question question) {
+    public void updateQuiz(Question question) {
         var currentQuestionIndex = getQuestionIndex(question);
         if (currentQuestionIndex != -1) {
             questions[currentQuestionIndex] = question;
-            return Result.SUCCESS;
         }
-        return Result.ERROR;
+
     }
 
     private int getQuestionIndex(Question question) {
@@ -55,5 +58,13 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public Question[] listQuiz() {
         return Arrays.copyOf(questions, index);
+    }
+
+    @Override
+    public Question[] getShuffledQuiz() {
+        if (listQuiz().length != 0) {
+            return Utils.shuffleQuestions(listQuiz());
+        }
+        return null;
     }
 }
