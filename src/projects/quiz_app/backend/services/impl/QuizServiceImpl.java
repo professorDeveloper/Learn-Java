@@ -62,9 +62,11 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public Question[] getShuffledQuiz() {
-        if (listQuiz().length != 0) {
-            return Utils.shuffleQuestions(listQuiz());
+        var qList = Arrays.copyOf(questions, index);
+        if (qList.length != 0) {
+            return Utils.shuffleQuestions(qList);
         }
+        System.out.println(Arrays.toString(qList));
         return null;
     }
 }

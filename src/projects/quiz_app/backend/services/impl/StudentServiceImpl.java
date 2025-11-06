@@ -20,7 +20,7 @@ public class StudentServiceImpl implements StudentService {
         TestResult[] userTestResults = new TestResult[100];
         int count = 0;
         for (TestResult testResult : testResults) {
-            if (testResult != null && testResult.user().username().equals(username)) {
+            if (testResult != null && testResult.username().equals(username)) {
                 userTestResults[count++] = testResult;
             }
         }

@@ -29,9 +29,9 @@ public class AuthPage {
         System.out.print("Enter Password:");
         String password = scanner.nextLine();
         var result = authService.register(username, password, Role.STUDENT);
-        if (result) {
+        if (result != null) {
             System.out.println("User registered successfully !");
-            listener.onUserAuthenticated(Role.STUDENT);
+            listener.onUserAuthenticated(result);
         } else {
             System.out.println("Username already exists !");
         }
@@ -45,16 +45,11 @@ public class AuthPage {
         System.out.print("Enter Password:");
         String password = scanner.nextLine();
         var result = authService.login(username, password);
-        switch (result) {
-            case STUDENT, TEACHER -> {
-                listener.onUserAuthenticated(result);
-            }
-            case NONE -> {
-                System.out.println("Username or password wrong !");
-            }
-            default -> {
-
-            }
+        if (result != null) {
+            listener.onUserAuthenticated(result);
+            System.out.println("Login successfully !");
+        } else {
+            System.out.println("Username or password wrong !");
         }
     }
 

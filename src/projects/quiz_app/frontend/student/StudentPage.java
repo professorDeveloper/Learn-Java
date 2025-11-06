@@ -25,6 +25,8 @@ public class StudentPage {
         Scanner scanner = new Scanner(System.in);
         var qList = quizService.getShuffledQuiz();
         if (qList != null) {
+            int correctAnswers = 0;
+            int wrongAnswers = 0;
             for (int i = 0; i < qList.length; i++) {
                 System.out.println("----------------- Question " + (i + 1) + " ----------------");
                 System.out.println(("The question is: " + qList[i].getQuestion()));
@@ -44,11 +46,18 @@ public class StudentPage {
 
                 if (qList[i].getAnswers()[option - 1].isCorrect()) {
                     System.out.println("Correct answer!");
+                    correctAnswers++;
                 } else {
                     System.out.println("Wrong answer!");
+                    wrongAnswers++;
                 }
-
             }
+            studentService.addTestResult(new TestResult(user.username(), correctAnswers, wrongAnswers));
+            System.out.println("---------------------------------------");
+            System.out.println("Test completed!");
+            System.out.println("Correct answers: " + correctAnswers);
+            System.out.println("Wrong answers: " + wrongAnswers);
+            System.out.println("---------------------------------------");
         } else {
             System.out.println("Quiz is empty ! \nStay in app. teacher will add questions");
         }

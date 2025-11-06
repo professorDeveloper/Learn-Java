@@ -12,23 +12,23 @@ public class AuthServiceImpl implements AuthService {
 
 
     @Override
-    public Role login(String username, String password) {
+    public User login(String username, String password) {
         User user = this.findUser(username);
         if (user != null && user.password().equals(password)) {
-            return user.role();
+            return user;
         }
-        return Role.NONE;
+        return null;
     }
 
     @Override
-    public boolean register(String username, String password, Role role) {
+    public User register(String username, String password, Role role) {
         var checkUser = findUser(username);
         if (checkUser == null) {
             User user = new User(username, password, role);
             this.users[this.index++] = user;
-            return true;
+            return user;
         } else {
-            return false;
+            return null;
         }
     }
 

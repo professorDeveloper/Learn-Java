@@ -1,4 +1,4 @@
 package projects.quiz_app.backend.dtos;
 
-public record TestResult(User user, int correctAnswers, int wrongAnswers) {
+public record TestResult(String username, int correctAnswers, int wrongAnswers) {
 }
