@@ -7,7 +7,7 @@ import projects.quiz_app.backend.enums.Result;
 public interface QuizService {
     void addQuiz(Question question);
 
-    void updateQuiz(Question question);
+    void updateQuiz(Question question, int questionIndex);
 
     Result deleteQuiz(Question question);
 

@@ -1,5 +1,7 @@
 package projects.quiz_app.frontend.pages.student;
 
+import projects.quiz_app.backend.domain.Answer;
+import projects.quiz_app.backend.dtos.QuestionAnswer;
 import projects.quiz_app.backend.dtos.TestResult;
 import projects.quiz_app.backend.dtos.User;
 import projects.quiz_app.backend.services.QuizService;
@@ -23,57 +25,99 @@ public class StudentPage {
             System.out.println("No history found!");
             return;
         }
-        System.out.println("Your history: ");
-        int count = 0;
-        for (TestResult testResult : testResults) {
-            count++;
-            System.out.println("----------{" + count + "}-----------");
-            System.out.println("Correct answers: " + testResult.correctAnswers());
-            System.out.println("Wrong answers: " + testResult.wrongAnswers());
+        for (int i = 0; i < testResults.length; i++) {
+            TestResult result = testResults[i];
+            var numI = i + 1;
+            System.out.println("========== Test #" + (numI) + " ==========");
+            System.out.println("Correct: " + result.correctAnswers() + " | Wrong: " + result.wrongAnswers());
             System.out.println("---------------------------------------");
+
+            QuestionAnswer[] answers = result.answers();
+            for (int j = 0; j < answers.length; j++) {
+                var numJ = j + 1;
+                QuestionAnswer questionAnswer = answers[j];
+                System.out.println("Q" + (numJ) + ": " + questionAnswer.question());
+
+                for (int f = 0; f < questionAnswer.options().length; f++) {
+                    var num = f + 1;
+                    if (f == questionAnswer.correctOption()) {
+                        var mark = " Correct ";
+                        System.out.println("\t" + num + ". " + questionAnswer.options()[f] + mark);
+                    } else {
+                        System.out.println("\t" + num + ". " + questionAnswer.options()[f]);
+                    }
+                }
+
+                System.out.println("\tYour answer:" + (questionAnswer.isCorrect() ? "Correct" : "Wrong"));
+                System.out.println();
+            }
+            System.out.println("=======================================\n");
         }
     }
 
     public void startQuiz() {
         Scanner scanner = new Scanner(System.in);
         var qList = quizService.getShuffledQuiz();
-        if (qList != null) {
-            int correctAnswers = 0;
-            int wrongAnswers = 0;
-            for (int i = 0; i < qList.length; i++) {
-                System.out.println("----------------- Question " + (i + 1) + " ----------------");
-                System.out.println(("The question is: " + qList[i].getQuestion()));
-                for (int j = 0; j < 4; j++) {
-                    System.out.println("\t" + (j + 1) + ". " + qList[i].getAnswers()[j].getAnswer());
-                }
-                int option = -1;
-                while (option < 0 || option >= qList[i].getAnswers().length) {
-                    System.out.print("Enter correct option number (1-4): ");
-                    int input = scanner.nextInt();
-                    if (input >= 1 && input <= qList[i].getAnswers().length) {
-                        option = input - 1;
-                    } else {
-                        System.out.println("Invalid number! Try again.");
-                    }
-                }
+        if (qList == null || qList.length == 0) {
+            System.out.println("Quiz is empty! \nStay in app. teacher will add questions");
+            return;
+        }
 
-                if (qList[i].getAnswers()[option].isCorrect()) {
-                    System.out.println("Correct answer!");
-                    correctAnswers++;
+        int correctAnswers = 0;
+        int wrongAnswers = 0;
+        QuestionAnswer[] answers = new QuestionAnswer[qList.length];
+
+        for (int i = 0; i < qList.length; i++) {
+            System.out.println("----------------- Question " + (i + 1) + " ----------------");
+            System.out.println("The question is: " + qList[i].getQuestion());
+            var options = qList[i].getAnswers();
+
+            for (int j = 0; j < options.length; j++) {
+                System.out.println("\t" + (j + 1) + ". " + options[j].getAnswer());
+            }
+
+            int option = -1;
+            while (option < 0) {
+                System.out.print("Enter correct option number (1-4): ");
+                int input = scanner.nextInt();
+                if (input >= 1 && input <= options.length) {
+                    option = input - 1;
                 } else {
-                    System.out.println("Wrong answer!");
-                    wrongAnswers++;
+                    System.out.println("Invalid number! Try again.");
                 }
             }
-            studentService.addTestResult(new TestResult(user.username(), correctAnswers, wrongAnswers));
-            System.out.println("---------------------------------------");
-            System.out.println("Test completed!");
-            System.out.println("Correct answers: " + correctAnswers);
-            System.out.println("Wrong answers: " + wrongAnswers);
-            System.out.println("---------------------------------------");
-        } else {
-            System.out.println("Quiz is empty ! \nStay in app. teacher will add questions");
+
+            boolean isCorrect = options[option].isCorrect();
+            if (isCorrect) correctAnswers++;
+            else wrongAnswers++;
+
+            int correctOption = getCorrectOption(options);
+
+            String[] optionTexts = new String[options.length];
+            for (int j = 0; j < options.length; j++) {
+                optionTexts[j] = options[j].getAnswer();
+            }
+            answers[i] = new QuestionAnswer(qList[i].getQuestion(), optionTexts, option, correctOption, isCorrect);
         }
+
+        studentService.addTestResult(new TestResult(user.username(), correctAnswers, wrongAnswers, answers));
+
+        System.out.println("---------------------------------------");
+        System.out.println("Test completed!");
+        System.out.println("Correct answers: " + correctAnswers);
+        System.out.println("Wrong answers: " + wrongAnswers);
+        System.out.println("---------------------------------------");
+    }
+
+    private int getCorrectOption(Answer[] options) {
+        int correctOption = 0;
+        for (int j = 0; j < options.length; j++) {
+            if (options[j].isCorrect()) {
+                correctOption = j;
+                break;
+            }
+        }
+        return correctOption;
     }
 
     public void setUser(User user) {

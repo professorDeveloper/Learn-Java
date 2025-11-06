@@ -1,8 +1,8 @@
 package projects.quiz_app.backend.domain;
 
 public class Answer {
-    private String answer;
-    private boolean isCorrect;
+    private final String answer;
+    private final boolean isCorrect;
 
     public Answer(String answer, boolean isCorrect) {
         this.answer = answer;
@@ -13,15 +13,10 @@ public class Answer {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
 
     public boolean isCorrect() {
         return isCorrect;
     }
 
-    public void setCorrect(boolean correct) {
-        isCorrect = correct;
-    }
+
 }

@@ -18,9 +18,12 @@ public class StudentServiceImpl implements StudentService {
 
     private int index = 0;
 
+
     @Override
     public void addTestResult(TestResult testResult) {
-        testResults[index++] = testResult;
+        if (index < testResults.length) {
+            testResults[index++] = testResult;
+        }
     }
 
     @Override

@@ -12,6 +12,32 @@ public class TeacherPage {
     QuizService service = QuizServiceImpl.getInstance();
     Question[] qList;
 
+    public void addInitQuestions() {
+        service.addQuiz(new Question("Java nima?",
+                new Answer[]{
+                        new Answer("Dasturlash tili", true),
+                        new Answer("Kofe turi", false),
+                        new Answer("Operatsion tizim", false),
+                        new Answer("Matn muharriri", false)
+                }));
+
+        service.addQuiz(new Question("JVM nima qiladi?",
+                new Answer[]{
+                        new Answer("Kod yozadi", false),
+                        new Answer("Bytecode ishga tushiradi", true),
+                        new Answer("Kompyuterni o'chiradi", false),
+                        new Answer("Internetga ulanadi", false)
+                }));
+
+        service.addQuiz(new Question("OOPning asosiy tamoyillaridan biri nima?",
+                new Answer[]{
+                        new Answer("Inkapsulyatsiya", true),
+                        new Answer("Kompilyatsiya", false),
+                        new Answer("Interpretatsiya", false),
+                        new Answer("Debugging", false)
+                }));
+    }
+
     public void createQuiz() {
 
         Question question = makeQuestionFromScanner();
@@ -55,8 +81,9 @@ public class TeacherPage {
 
     public void deleteQuiz() {
         qList = service.listQuiz();
-        var question = questionChooseByListWithNum("Enter question number:");
-        if (question != null) {
+        var questionIndex = questionChooseByListWithNum("Enter question number:");
+        if (questionIndex != -1) {
+            var question = qList[questionIndex];
             Result r = service.deleteQuiz(question);
             if (r.equals(Result.SUCCESS)) {
                 System.out.println("Question deleted successfully!");
@@ -67,15 +94,15 @@ public class TeacherPage {
     }
 
     public void updateQuiz() {
-        var question = questionChooseByListWithNum("Enter question number for update:");
-        if (question != null) {
+        var questionIndex = questionChooseByListWithNum("Enter question number for update:");
+        if (questionIndex != -1) {
             Question updatedQuestion = makeQuestionFromScanner();
-            service.updateQuiz(updatedQuestion);
+            service.updateQuiz(updatedQuestion, questionIndex);
             System.out.println("Question updated successfully !");
         }
     }
 
-    private Question questionChooseByListWithNum(String message) {
+    private int questionChooseByListWithNum(String message) {
         qList = service.listQuiz();
         for (int i = 0; i < qList.length; i++) {
             System.out.println((i + 1) + ". " + qList[i].getQuestion());
@@ -84,11 +111,11 @@ public class TeacherPage {
         Scanner scanner = new Scanner(System.in);
         int questionNumber = scanner.nextInt();
         if (questionNumber > 0 && questionNumber <= qList.length) {
-            return qList[questionNumber - 1];
+            return questionNumber - 1;
         } else {
             System.out.println("Invalid question number!");
         }
-        return null;
+        return -1;
     }
 
     public void listQuiz() {

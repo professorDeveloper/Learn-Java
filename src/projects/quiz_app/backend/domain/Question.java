@@ -1,8 +1,8 @@
 package projects.quiz_app.backend.domain;
 
 public class Question {
-    private String question;
-    private Answer[] answers = new Answer[4];
+    private final String question;
+    private Answer[] answers;
 
     public Question(String question, Answer[] answers) {
         this.question = question;
@@ -13,16 +13,10 @@ public class Question {
         return answers;
     }
 
-    public void setAnswers(Answer[] answers) {
-        this.answers = answers;
-    }
 
     public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
 
 }

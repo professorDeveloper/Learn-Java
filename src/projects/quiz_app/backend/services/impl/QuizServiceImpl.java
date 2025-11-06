@@ -29,12 +29,8 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public void updateQuiz(Question question) {
-        var currentQuestionIndex = getQuestionIndex(question);
-        if (currentQuestionIndex != -1) {
-            questions[currentQuestionIndex] = question;
-        }
-
+    public void updateQuiz(Question question, int updateIndex) {
+        questions[updateIndex] = question;
     }
 
     private int getQuestionIndex(Question question) {
