@@ -1,4 +1,4 @@
-package projects.quiz_app.frontend.auth;
+package projects.quiz_app.frontend.pages.auth;
 
 import projects.quiz_app.backend.enums.Role;
 import projects.quiz_app.backend.services.AuthService;

@@ -1,4 +1,4 @@
-package projects.quiz_app.frontend.student;
+package projects.quiz_app.frontend.pages.student;
 
 import projects.quiz_app.backend.dtos.TestResult;
 import projects.quiz_app.backend.dtos.User;
@@ -11,14 +11,27 @@ import java.util.Scanner;
 
 public class StudentPage {
 
-    private final QuizService quizService = new QuizServiceImpl();
-    private final StudentService studentService = new StudentServiceImpl();
+    private final QuizService quizService = QuizServiceImpl.getInstance();
+    private final StudentService studentService = StudentServiceImpl.getInstance();
 
     private User user;
 
 
     public void viewHistory() {
-
+        var testResults = studentService.getTestResultsByUser(user.username());
+        if (testResults.length == 0) {
+            System.out.println("No history found!");
+            return;
+        }
+        System.out.println("Your history: ");
+        int count = 0;
+        for (TestResult testResult : testResults) {
+            count++;
+            System.out.println("----------{" + count + "}-----------");
+            System.out.println("Correct answers: " + testResult.correctAnswers());
+            System.out.println("Wrong answers: " + testResult.wrongAnswers());
+            System.out.println("---------------------------------------");
+        }
     }
 
     public void startQuiz() {
@@ -44,7 +57,7 @@ public class StudentPage {
                     }
                 }
 
-                if (qList[i].getAnswers()[option - 1].isCorrect()) {
+                if (qList[i].getAnswers()[option].isCorrect()) {
                     System.out.println("Correct answer!");
                     correctAnswers++;
                 } else {

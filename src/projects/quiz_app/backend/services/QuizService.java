@@ -2,7 +2,6 @@ package projects.quiz_app.backend.services;
 
 
 import projects.quiz_app.backend.domain.Question;
-import projects.quiz_app.backend.dtos.User;
 import projects.quiz_app.backend.enums.Result;
 
 public interface QuizService {

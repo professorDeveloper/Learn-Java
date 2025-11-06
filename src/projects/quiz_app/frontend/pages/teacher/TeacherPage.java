@@ -1,4 +1,4 @@
-package projects.quiz_app.frontend.teacher;
+package projects.quiz_app.frontend.pages.teacher;
 
 import projects.quiz_app.backend.domain.Answer;
 import projects.quiz_app.backend.domain.Question;
@@ -9,7 +9,7 @@ import projects.quiz_app.backend.services.impl.QuizServiceImpl;
 import java.util.Scanner;
 
 public class TeacherPage {
-    QuizService service = new QuizServiceImpl();
+    QuizService service = QuizServiceImpl.getInstance();
     Question[] qList;
 
     public void createQuiz() {

@@ -8,5 +8,4 @@ public interface AuthService {
 
     User register(String username, String password, Role role);
 
-    boolean changePasscode(String username, String oldPasscode, String newPasscode);
 }

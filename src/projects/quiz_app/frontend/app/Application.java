@@ -2,10 +2,10 @@ package projects.quiz_app.frontend.app;
 
 import projects.quiz_app.backend.dtos.User;
 import projects.quiz_app.backend.enums.Role;
-import projects.quiz_app.frontend.auth.AuthPage;
+import projects.quiz_app.frontend.pages.auth.AuthPage;
 import projects.quiz_app.frontend.helper.LogoutListener;
-import projects.quiz_app.frontend.student.StudentPage;
-import projects.quiz_app.frontend.teacher.TeacherPage;
+import projects.quiz_app.frontend.pages.student.StudentPage;
+import projects.quiz_app.frontend.pages.teacher.TeacherPage;
 
 import java.util.Scanner;
 

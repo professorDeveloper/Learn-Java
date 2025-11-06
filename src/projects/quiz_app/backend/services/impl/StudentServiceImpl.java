@@ -3,10 +3,18 @@ package projects.quiz_app.backend.services.impl;
 import projects.quiz_app.backend.dtos.TestResult;
 import projects.quiz_app.backend.services.StudentService;
 
-import java.util.Arrays;
-
 public class StudentServiceImpl implements StudentService {
     private final TestResult[] testResults = new TestResult[100];
+
+    private static final StudentServiceImpl instance = new StudentServiceImpl();
+
+    public static StudentServiceImpl getInstance() {
+        return instance;
+    }
+
+    private StudentServiceImpl() {
+    }
+
 
     private int index = 0;
 
@@ -26,15 +34,5 @@ public class StudentServiceImpl implements StudentService {
         }
         return userTestResults;
     }
-
-    @Override
-    public void clearHistory() {
-
-    }
-
-    private TestResult[] getNotNullTestResults() {
-        return Arrays.copyOf(testResults, index);
-    }
-
 
 }

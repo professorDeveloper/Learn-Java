@@ -1,19 +1,26 @@
 package projects.quiz_app.backend.services.impl;
 
-import kotlin.contracts.Returns;
 import projects.quiz_app.backend.domain.Question;
-import projects.quiz_app.backend.dtos.User;
 import projects.quiz_app.backend.enums.Result;
 import projects.quiz_app.backend.services.QuizService;
 import projects.quiz_app.backend.utils.Utils;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
 public class QuizServiceImpl implements QuizService {
-    private final Question[] questions = new Question[100];
+    private static final Question[] questions = new Question[100];
     private int index = 0;
+    private static QuizServiceImpl instance = null;
+
+    private QuizServiceImpl() {
+    }
+
+    public static QuizServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new QuizServiceImpl();
+        }
+        return instance;
+    }
 
     @Override
     public void addQuiz(Question question) {
