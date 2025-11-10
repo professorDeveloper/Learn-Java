@@ -1,7 +1,10 @@
 package module4.workingWithThreads;
 
+import module4.daemonthread.ExceptionHandler;
+
 public class ThreadInterruption {
     public static void main(String[] args) {
+        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
         Runnable runnable = () -> {
             try {
                 for (int i = 0; i < 6; i++) {
@@ -9,7 +12,7 @@ public class ThreadInterruption {
                     Thread.sleep(100);
                 }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         };
         Thread thread = new Thread(runnable, "Thread 1");
