@@ -20,12 +20,16 @@ public class DownloadManager implements Runnable {
             System.out.println(Thread.currentThread().getName());
         }
     }
+
+    public String getFileName() {
+        return fileName;
+    }
 }
 
 class MainTest {
     public static void main(String[] args) {
         DownloadManager downloadManager = new DownloadManager("Java-Threads.pdf");
-        Thread thread = new Thread(downloadManager);
+        Thread thread = new Thread(downloadManager, downloadManager.getFileName());
         thread.start();
     }
 }
