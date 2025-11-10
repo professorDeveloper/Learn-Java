@@ -1,4 +1,4 @@
-package module4.workingWithThreads;
+package module4.threads.workingWithThreads;
 
 public class ThreadInterruptException {
     public static void main(String[] args) {

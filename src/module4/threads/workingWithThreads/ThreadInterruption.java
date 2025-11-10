@@ -1,6 +1,6 @@
-package module4.workingWithThreads;
+package module4.threads.workingWithThreads;
 
-import module4.daemonthread.ExceptionHandler;
+import module4.threads.daemonthread.ExceptionHandler;
 
 public class ThreadInterruption {
     public static void main(String[] args) {

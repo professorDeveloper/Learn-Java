@@ -1,4 +1,4 @@
-package module4.race_condtion_lock;
+package module4.threads.race_condtion_lock;
 
 public class RaceConditionProblemSolved {
     public static final int N_ACCOUNTS = 100;

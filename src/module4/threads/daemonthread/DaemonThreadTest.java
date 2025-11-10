@@ -1,4 +1,4 @@
-package module4.daemonthread;
+package module4.threads.daemonthread;
 
 public class DaemonThreadTest {
     public static void main(String[] args) throws InterruptedException {
