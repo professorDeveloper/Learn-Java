@@ -15,13 +15,16 @@ public class Bank {
 
     public void transfer(int from, int to, double amount) {
         if (accounts[from] < amount) return;
-        lock.lock();
-        System.out.print(Thread.currentThread() + ": ");
-        accounts[from] -= amount;
-        System.out.printf("%10.2f from %d to %d ", amount, from, to);
-        accounts[to] += amount;
-        System.out.printf("Total balance: %10.2f%n", getTotalBalance());
-        lock.unlock();
+        try {
+            lock.lock();
+            System.out.print(Thread.currentThread() + ": ");
+            accounts[from] -= amount;
+            System.out.printf("%10.2f from %d to %d ", amount, from, to);
+            accounts[to] += amount;
+            System.out.printf("Total balance: %10.2f%n", getTotalBalance());
+        } finally {
+            lock.unlock();
+        }
     }
 
     public double getTotalBalance() {
