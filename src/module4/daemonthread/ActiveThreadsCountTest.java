@@ -1,4 +1,4 @@
-package module4.threads.daemonthread;
+package module4.daemonthread;
 
 public class ActiveThreadsCountTest {
     public static void main(String[] args) {

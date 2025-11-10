@@ -1,4 +1,4 @@
-package module4.threads.workingWithThreads;
+package module4.workingWithThreads;
 
 public class DownloadManager implements Runnable {
     private final String fileName;

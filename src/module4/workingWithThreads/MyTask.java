@@ -1,4 +1,4 @@
-package module4.threads.workingWithThreads;
+package module4.workingWithThreads;
 
 class MyTask extends Thread {
     @Override
