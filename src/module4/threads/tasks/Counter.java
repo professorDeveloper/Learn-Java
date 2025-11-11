@@ -1,20 +1,30 @@
-package module4.tasks;
+package module4.threads.tasks;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.Thread.sleep;
 
 public class Counter {
     private int count;
+    private final Lock lock = new ReentrantLock();
 
     public Counter(int count) {
         this.count = count;
     }
 
 
-    public synchronized int addCount() throws InterruptedException {
-        int old = this.count;
-        sleep(100);
-        this.count = old + 1;
-        return old;
+    public int addCount() throws InterruptedException {
+        lock.lock();
+        try {
+            count++;
+            Thread.sleep(10);
+            return count;
+        } finally {
+            lock.unlock();
+        }
+
     }
 
 
@@ -22,11 +32,11 @@ public class Counter {
 
 class RaceCounterApp {
     public static void main(String[] args) {
-        Counter counter = new Counter(1);
+        Counter counter = new Counter(0);
         Thread th1 = new Thread(() -> {
             while (true) {
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(30);
                     System.out.println(counter.addCount());
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -37,7 +47,7 @@ class RaceCounterApp {
         Thread th2 = new Thread(() -> {
             while (true) {
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(100);
                     System.out.println(counter.addCount());
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -48,7 +58,7 @@ class RaceCounterApp {
         Thread th3 = new Thread(() -> {
             while (true) {
                 try {
-                    Thread.sleep(150);
+                    Thread.sleep(50);
                     System.out.println(counter.addCount());
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);

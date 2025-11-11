@@ -1,4 +1,4 @@
-package module4.tasks;
+package module4.threads.tasks;
 
 import static java.lang.Thread.sleep;
 
