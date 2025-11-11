@@ -1,4 +1,4 @@
-package module4.race_condtion_lock;
+package module4.threads.race_condtion_lock;
 
 import java.util.Arrays;
 import java.util.concurrent.locks.Condition;
