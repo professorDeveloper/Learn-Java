@@ -8,7 +8,7 @@ import static java.lang.Thread.sleep;
 
 public class Counter {
     private int count;
-    private final Lock lock = new ReentrantLock();
+//    private final Lock lock = new ReentrantLock();
 
     public Counter(int count) {
         this.count = count;
@@ -16,13 +16,13 @@ public class Counter {
 
 
     public int addCount() throws InterruptedException {
-        lock.lock();
+//        lock.lock();
         try {
             count++;
             Thread.sleep(10);
             return count;
         } finally {
-            lock.unlock();
+//            lock.unlock();
         }
 
     }
