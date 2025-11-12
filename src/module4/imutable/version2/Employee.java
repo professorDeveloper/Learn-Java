@@ -1,12 +1,12 @@
-package module4.imutable;
+package module4.imutable.version2;
 
 public final class Employee {
     private final String fullName;
     private final int age;
     private final Address address;
 
-    public Address getAddress() {
-        return address;
+    public Address getAddress() throws CloneNotSupportedException {
+        return (Address) address.clone();
     }
 
     public int getAge() {

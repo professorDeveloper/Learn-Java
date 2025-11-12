@@ -1,4 +1,4 @@
-package module4.imutable;
+package module4.imutable.version1;
 
 public final class Address implements Cloneable {
     private  String city;

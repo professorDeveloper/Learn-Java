@@ -1,4 +1,4 @@
-package module4.imutable;
+package module4.imutable.version2;
 
 public class EmployeeTest {
     public static void main(String[] args) throws CloneNotSupportedException {
@@ -6,5 +6,7 @@ public class EmployeeTest {
         Employee employee = new Employee("John Doe", 30, address);
       /*  address.setCity("Bishkek");
         System.out.println("Employee: " + employee);*/
+        employee.getAddress().setCity("Bishkek");
+        System.out.println("Employee: " + employee);
     }
 }
