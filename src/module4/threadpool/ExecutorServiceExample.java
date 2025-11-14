@@ -3,6 +3,7 @@ package module4.threadpool;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ExecutorServiceExample {
     public static void main(String[] args) throws InterruptedException {
@@ -26,6 +27,10 @@ public class ExecutorServiceExample {
             service.submit(r);
         }
 
-        service.shutdown();
+        service.shutdown();// Shutdowndan keyin yangi execute bo`lmaydi.
+        if (service.awaitTermination(1, TimeUnit.SECONDS)) {// 1 sekunddan keyin ishga tushadi.
+            service.shutdownNow();
+        }
+
     }
 }
