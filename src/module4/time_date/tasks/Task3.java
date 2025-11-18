@@ -11,7 +11,7 @@ public class Task3 {
         while (true) {
             service.execute(() -> {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(60000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
