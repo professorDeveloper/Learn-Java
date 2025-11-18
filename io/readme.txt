@@ -1,0 +1,1 @@
+Accept both compliments and criticism because in order to grow, a flower needs to take both, sun and rain.
