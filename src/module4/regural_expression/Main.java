@@ -7,18 +7,14 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        Pattern compile = Pattern.compile("e.{2}");
-        Matcher matcher = compile.matcher("Hello PDP text");
-        while (matcher.find()) {
-            System.out.println("Start: " + matcher.start());
-            System.out.println("End: " + matcher.end());
-
-            System.out.println(matcher.group());
-        }
+        String input = "Hello PDP 12, 2025/11/20";
+        int numCount = getNumCountFromString(input);
+        System.out.println(numCount);
     }
 
     public static int getNumCountFromString(String str) {
-        Pattern pattern = Pattern.compile("\\d+");
+        String regex = "\\d+";
+        Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);
         int count = 0;
         while (matcher.find()) {
