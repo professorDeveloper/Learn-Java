@@ -14,7 +14,7 @@ public class SimpleLoggingExample {
         logger.setUseParentHandlers(false);
         logger.addHandler(handler);
         handler.setLevel(Level.INFO);
-        
+
         handler.setFormatter(simpleFormatter);
         logger.log(Level.SEVERE, "This is an info message");
     }
