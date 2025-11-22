@@ -1,9 +1,6 @@
 package module4.lessons.logging;
 
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 public class SimpleLoggingExample {
     private static final Logger logger = Logger.getLogger("MyLogger");
@@ -16,6 +13,8 @@ public class SimpleLoggingExample {
         handler.setLevel(Level.INFO);
 
         handler.setFormatter(simpleFormatter);
-        logger.log(Level.SEVERE, "This is an info message");
+        LogRecord logRecord = new LogRecord(Level.INFO, "Hello world");
+        logger.log(logRecord);
+
     }
 }
