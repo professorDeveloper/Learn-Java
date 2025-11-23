@@ -1,7 +1,11 @@
 package module4.lessons.logging;
 
+
+import module4.lessons.logging.err.Err;
+
 import java.util.Random;
 import java.util.logging.Handler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TelegramAlarmExample {
@@ -11,15 +15,18 @@ public class TelegramAlarmExample {
                 resource.getFile());
     }
 
-    private static Logger logger = Logger.getLogger(TelegramAlarmExample.class.getSimpleName());
+    private static final Logger logger = Logger.getLogger(TelegramAlarmExample.class.getSimpleName());
 
     public static void main(String[] args) {
-        Handler handler = new TelegramAlarmHandler();
-        logger.addHandler(handler);
-        if (new Random().nextBoolean()) {
-            logger.severe("Error Message For Telegram");
-        } else {
-            logger.info("Info Message console file handlers");
+        try {
+            if (new Random().nextBoolean()) throw new RuntimeException("Runtime Exception for testing");
+            else {
+                new Err().printErr();
+
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            logger.log(Level.SEVERE, "Error Message", e);
         }
     }
 }
