@@ -1,0 +1,3 @@
+[submodule "chat_logging"]
+	path = chat_logging
+	url = https://github.com/professorDeveloper/chat_logging
