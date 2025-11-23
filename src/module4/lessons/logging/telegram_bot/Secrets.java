@@ -1,4 +1,4 @@
-package module4.lessons.logging;
+package module4.lessons.logging.telegram_bot;
 
 public class Secrets {
     public static String token = "8408680568:AAFjHKH5k5ArWyS1wCxrxXl77-oBOPVqYIk/getUpdates";

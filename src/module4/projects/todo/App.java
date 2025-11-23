@@ -1,6 +1,5 @@
 package module4.projects.todo;
 
-import module4.lessons.logging.SimpleLoggingExample;
 import module4.projects.todo.dto.Todo;
 import module4.projects.todo.service.TaskService;
 import module4.projects.todo.service.imp.TaskServiceImp;

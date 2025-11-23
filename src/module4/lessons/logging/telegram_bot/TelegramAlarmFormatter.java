@@ -1,4 +1,4 @@
-package module4.lessons.logging;
+package module4.lessons.logging.telegram_bot;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

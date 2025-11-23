@@ -1,7 +1,6 @@
 package module4.lessons.logging;
 
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 

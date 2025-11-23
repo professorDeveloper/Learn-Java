@@ -1,10 +1,9 @@
-package module4.lessons.logging;
+package module4.lessons.logging.telegram_bot;
 
 
 import module4.lessons.logging.err.Err;
 
 import java.util.Random;
-import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

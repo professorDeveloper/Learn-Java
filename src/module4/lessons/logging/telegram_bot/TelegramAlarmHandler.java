@@ -1,10 +1,9 @@
-package module4.lessons.logging;
+package module4.lessons.logging.telegram_bot;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Date;
 import java.util.logging.LogRecord;
 import java.util.logging.StreamHandler;
 

@@ -1,4 +1,4 @@
-package module4.lessons.logging;
+package module4.lessons.logging.telegram_bot;
 
 import java.util.logging.Filter;
 import java.util.logging.Level;
