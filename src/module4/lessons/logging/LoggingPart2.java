@@ -7,20 +7,20 @@ import java.util.logging.Logger;
 
 public class LoggingPart2 {
     static {
-        try {
-            var resource = SimpleLoggingExample.class.getClassLoader().getResource("logging.properties");
+        initializeLogging();
+    }
 
-            System.setProperty("java.util.logging.config.file",
-                    resource.getFile());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public static void initializeLogging() {
+        var resource = SimpleLoggingExample.class.getClassLoader().getResource("logging.properties");
+
+        System.setProperty("java.util.logging.config.file",
+                resource.getFile());
     }
 
     private static final Logger logger = Logger.getLogger("MyLogger");
 
     public static void main(String[] args) {
-        LogRecord record = new LogRecord(Level.INFO, "Hello PDP");
+        LogRecord record = new LogRecord(Level.WARNING, "Hello PDP");
         logger.log(record);
 
     }

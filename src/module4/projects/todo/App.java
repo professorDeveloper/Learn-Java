@@ -1,13 +1,27 @@
 package module4.projects.todo;
 
+import module4.lessons.logging.SimpleLoggingExample;
 import module4.projects.todo.dto.Todo;
 import module4.projects.todo.service.TaskService;
 import module4.projects.todo.service.imp.TaskServiceImp;
 
 import java.time.*;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class App {
+    static {
+        initializeLogging();
+    }
+
+    private static void initializeLogging() {
+
+        var resource = App.class.getClassLoader().getResource("logging_todo.properties");
+
+        System.setProperty("java.util.logging.config.file", resource.getFile());
+    }
+
+    private static final Logger logger = Logger.getLogger(App.class.getName());
 
     private final TaskService taskService = new TaskServiceImp();
     private final Scanner scanner = new Scanner(System.in);
@@ -54,10 +68,8 @@ public class App {
 
         System.out.print("Description: ");
         String desc = scanner.nextLine();
-
         LocalDateTime dateTime = chooseDateTime();
         taskService.add(new Todo(title, desc, false, dateTime));
-
         System.out.println("Todo added");
     }
 
@@ -132,9 +144,9 @@ public class App {
 
                 if (!pickedDate.isBefore(today)) break;
 
-            } catch (Exception ignored) {}
-
-            System.out.println("Invalid day (day cannot be past). Try again.");
+            } catch (Exception ignored) {
+            }
+            logger.warning("Invalid day (day cannot be past). Try again.");
         }
 
         int hour;
@@ -143,9 +155,10 @@ public class App {
                 System.out.print("Hour (0–23): ");
                 hour = Integer.parseInt(scanner.nextLine());
                 if (hour >= 0 && hour <= 23) break;
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
 
-            System.out.println("Invalid hour, try again.");
+            logger.warning("Invalid hour, try again.");
         }
 
         int minute;
@@ -154,9 +167,10 @@ public class App {
                 System.out.print("Minute (0–59): ");
                 minute = Integer.parseInt(scanner.nextLine());
                 if (minute >= 0 && minute <= 59) break;
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
 
-            System.out.println("Invalid minute, try again.");
+            logger.warning("Invalid minute, try again.");
         }
 
         int second;
@@ -165,21 +179,17 @@ public class App {
                 System.out.print("Second (0–59): ");
                 second = Integer.parseInt(scanner.nextLine());
                 if (second >= 0 && second <= 59) break;
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
 
-            System.out.println("Invalid second, try again.");
+            logger.warning("Invalid second, try again.");
         }
 
         LocalDate pickedDate = today.withDayOfMonth(day);
-        LocalDateTime dateTime = LocalDateTime.of(
-                pickedDate.getYear(),
-                pickedDate.getMonth(),
-                pickedDate.getDayOfMonth(),
-                hour, minute, second
-        );
+        LocalDateTime dateTime = LocalDateTime.of(pickedDate.getYear(), pickedDate.getMonth(), pickedDate.getDayOfMonth(), hour, minute, second);
 
         if (dateTime.isBefore(LocalDateTime.now())) {
-            System.out.println("Selected time cannot be in the past.");
+            logger.warning("Selected time cannot be in the past.");
             return chooseDateTime();
         }
 
@@ -187,7 +197,7 @@ public class App {
     }
 
     private void exit() {
-        System.out.println("Exited");
+        logger.info("Exited");
         System.exit(0);
     }
 
