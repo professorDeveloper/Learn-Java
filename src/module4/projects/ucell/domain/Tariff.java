@@ -9,8 +9,6 @@ public class Tariff implements Serializable {
     private double price;
     private String description;
 
-    public Tariff() {}
-
     public Tariff(String id, String name, double price, String description) {
         this.id = id;
         this.name = name;

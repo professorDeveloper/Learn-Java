@@ -6,8 +6,6 @@ public class UserRegisterDTO {
     private String email;
     private String password;
 
-    public UserRegisterDTO() {}
-
     public UserRegisterDTO(String fullName, String email, String password) {
         this.fullName = fullName;
         this.email = email;
