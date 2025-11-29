@@ -1,5 +1,8 @@
 package module3.lesson.generics.task3;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class CustomList<E> {
     private Object[] elementData;
     private int size;
@@ -24,6 +27,31 @@ public class CustomList<E> {
         return index == 0;
     }
 
+
+    public static void main(String[] args) {
+        //buuble sort
+        int[] list =new int[]{6,2,9,11};
+        for (int i = 0; i < list.length; i++) {
+            for (int j = 0; j < list.length - i - 1; j++) {
+                if (list[j] > list[j + 1]) {
+                    list[i]=list[i] - list[j];
+                    list[i] =list[i] + list[j];
+                    list[i] = list[i] - list[j];
+                }
+            }
+        }
+        System.out.println(Arrays.toString(list));
+    }
+
+    private static void fillArray(int[][] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = ++count;
+            }
+        }
+    }
+
     public void clear() {
         index = 0;
         size = 10;
@@ -41,3 +69,4 @@ public class CustomList<E> {
         return (E) elementData[index];
     }
 }
+
