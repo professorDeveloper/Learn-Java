@@ -5,7 +5,13 @@ import java.util.Set;
 
 public class ObjectCreating {
     public static void main(String[] args) {
-        Set<String> languages =new HashSet<>();
-        languages.add("a");
+/*
+        a dan z gacha bo'lgan harflarni saqlovchi set yarating forEach orqali ekranga chop eting
+*/
+        Set<String> set = new HashSet<>();
+        for (char c = 'a'; c <= 'z'; c++) {
+            set.add(String.valueOf(c));
+        }
+        set.forEach(System.out::println);
     }
 }
