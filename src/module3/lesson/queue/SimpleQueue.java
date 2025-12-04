@@ -24,9 +24,14 @@ public class SimpleQueue {
     public Object dequeue() {
         Object element = elements[0];
         System.arraycopy(elements, 1, elements, 0, size - 1);
+        elements[size - 1] = null;
+        size--;
         return element;
     }
 
+    public int size() {
+        return size;
+    }
     public SimpleQueue(int capacity) {
         this.elements = new Object[capacity];
     }
