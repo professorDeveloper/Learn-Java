@@ -2,7 +2,7 @@ package module3.lesson.queue.task;
 
 import org.jetbrains.annotations.NotNull;
 
-public class User implements Comparable<User> {
+public class User  {
     private String name;
     private String phone;
     private int age;
@@ -46,8 +46,5 @@ public class User implements Comparable<User> {
         this.phone = phone;
     }
 
-    @Override
-    public int compareTo(@NotNull User o) {
-        return Integer.compare(this.age, o.age) * -1;
-    }
+
 }
