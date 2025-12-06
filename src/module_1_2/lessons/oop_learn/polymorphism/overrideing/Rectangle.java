@@ -8,7 +8,6 @@ public class Rectangle extends Shape {
         this.a = a;
         this.b = b;
     }
-
     @Override
     public void area() {
         System.out.printf("Rectangle area: %d", a * b);
