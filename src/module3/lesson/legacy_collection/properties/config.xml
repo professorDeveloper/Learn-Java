@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="database.url">jdbc:postgresql</entry>
+    <entry key="database.username">postgres</entry>
+    <entry key="database.password">1234</entry>
+    <entry key="database.name">java_lesson</entry>
+</properties>
