@@ -1,6 +1,7 @@
 package module5.refelctions;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 public class ReflectionApi {
     public static void main(String[] args) throws Exception {
@@ -8,6 +9,10 @@ public class ReflectionApi {
         Constructor<MyClass> declaredConstructor = classz.getDeclaredConstructor();
         declaredConstructor.setAccessible(true);
         MyClass o = declaredConstructor.newInstance();
-        o.test();
+        Class<? extends MyClass> aClass = o.getClass();
+        Method[] methods = aClass.getMethods();
+        for (Method method : methods) {
+            System.out.println(method.getName());
+        }
     }
 }
